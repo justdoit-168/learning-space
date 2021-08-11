@@ -1,4 +1,9 @@
 /*
+ * @Date           : 2021-08-12 01:29:17
+ * @FilePath       : /learning-space/quasar.conf.js
+ * @Description    : 
+ */
+/*
  * This file runs in a Node context (it's NOT transpiled by Babel), so use only
  * the ES6 features that are supported by your Node version. https://node.green/
  */
@@ -45,7 +50,7 @@ module.exports = function (/* ctx */) {
     // Full list of options: https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
-
+      distDir:'docs/',
       // transpile: false,
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
