@@ -1,15 +1,28 @@
+<!--
+ * @Date           : 2021-08-12 01:29:17
+ * @FilePath       : /learning-space/src/pages/Index.vue
+ * @Description    : 
+-->
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
-  </q-page>
+  <div>
+    <h1>sb</h1>
+
+<q-markdown :src="markdown" />
+<q-markdown :src="markdown1" />
+
+  </div>
 </template>
 
 <script>
+import markdown from './md/aaa.md'
+import markdown1 from './md/aaa.md'
 export default {
-  name: 'PageIndex'
+  name: 'PageIndex',
+  data() {
+    return {
+      markdown,
+      markdown1,
+    }
+  },
 }
 </script>

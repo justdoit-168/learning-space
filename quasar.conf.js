@@ -46,6 +46,11 @@ module.exports = function (/* ctx */) {
       'roboto-font', // optional, you are not bound to it
       'material-icons', // optional, you are not bound to it
     ],
+    htmlVariables: {
+      title: '我的学习空间',
+      description: '我的学习空间',
+      
+    },
 
     // Full list of options: https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
