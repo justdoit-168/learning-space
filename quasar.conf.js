@@ -1,92 +1,60 @@
 /*
- * @Date           : 2021-08-12 01:29:17
+ * @Date           : 2020-08-31 16:40:01
  * @FilePath       : /learning-space/quasar.conf.js
  * @Description    : 
  */
-/*
- * This file runs in a Node context (it's NOT transpiled by Babel), so use only
- * the ES6 features that are supported by your Node version. https://node.green/
- */
-
 // Configuration for your app
-// https://v1.quasar.dev/quasar-cli/quasar-conf-js
+// https://quasar.dev/quasar-cli/quasar-conf-js
 
-module.exports = function (/* ctx */) {
+console.log('process.env.MODE-------------------------');
+console.log(process.env.MODE);
+console.log( process.argv );
+console.log('process.env.MODE-------------------------');
+//构建输出到 GitHub
+const for_github = (process.argv[2] || '') .trim() =='g'
+const path = require('path')
+module.exports = function (ctx) {
   return {
-    // https://v1.quasar.dev/quasar-cli/supporting-ts
+
+    // https://quasar.dev/quasar-cli/supporting-ts
     supportTS: false,
 
-    // https://v1.quasar.dev/quasar-cli/prefetch-feature
+    // https://quasar.dev/quasar-cli/prefetch-feature
     // preFetch: true,
+
+
 
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
-    // https://v1.quasar.dev/quasar-cli/boot-files
+    // https://quasar.dev/quasar-cli/cli-documentation/boot-files
     boot: [
-      
       'i18n',
       'axios',
+      "utils",
+      "lodash"
     ],
 
-    // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
+    // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
     css: [
-      'app.scss'
+      'app.scss',
+      "github-markdown.css",
+      'scroll.scss'
     ],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
       // 'ionicons-v4',
-      // 'mdi-v5',
+      // 'mdi-v4',
       // 'fontawesome-v5',
       // 'eva-icons',
       // 'themify',
-      // 'line-awesome',
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
       'roboto-font', // optional, you are not bound to it
-      'material-icons', // optional, you are not bound to it
+      'material-icons' // optional, you are not bound to it
     ],
-    htmlVariables: {
-      title: '我的学习空间',
-      description: '我的学习空间',
-      
-    },
 
-    // Full list of options: https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
-    build: {
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
-      distDir:'docs/',
-      // transpile: false,
-
-      // Add dependencies for transpiling with Babel (Array of string/regex)
-      // (from node_modules, which are by default not transpiled).
-      // Applies only if "transpile" is set to true.
-      // transpileDependencies: [],
-
-      // rtl: false, // https://v1.quasar.dev/options/rtl-support
-      // preloadChunks: true,
-      // showProgress: false,
-      // gzip: true,
-      // analyze: true,
-
-      // Options below are automatically set depending on the env, set them if you want to override
-      // extractCSS: false,
-
-      // https://v1.quasar.dev/quasar-cli/handling-webpack
-      // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
-      chainWebpack (/* chain */) {
-        //
-      },
-    },
-
-    // Full list of options: https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
-    devServer: {
-      https: false,
-      port: 8080,
-      open: true // opens browser window automatically
-    },
-
-    // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
+    // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
       iconSet: 'material-icons', // Quasar icon set
       lang: 'en-us', // Quasar language pack
@@ -105,71 +73,155 @@ module.exports = function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+        "Cookies"
+      ]
+    },
+
+
+    // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
+    supportIE: true,
+    //https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-htmlVariables
+    htmlVariables: {
+      title: '成长空间',
+      description:'成长空间',
+      icon_path: ctx.dev?'img/logo/favicon.ico':  (for_github ?'/learning-space/public/img/logo/favicon.ico':'img/logo/favicon.ico')
+  
+    },
+    // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
+
+
+    build: {
+      distDir: (for_github?"./docs-2":'./dist/dist-spa-server') ,
+      scopeHoisting: true,
+      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      // vueRouterMode: 'history', // available values: 'hash', 'history'
+      showProgress: true,
+      // ignorePublicFolder:true,
+      gzip: false,
+      analyze: false,
+      // publicPath:"https://github.com/jinnianwushuang/learning-space/blob/master/public/",  mode
+      publicPath: for_github?"/learning-space/public/":"/",
+      env: {
+        last_update_time:  new Date().getTime(),
+        for_github
+      },
+      // Options below are automatically set depending on the env, set them if you want to override
+      // preloadChunks: false,
+      // extractCSS: false,
+
+      // https://quasar.dev/quasar-cli/cli-documentation/handling-webpack
+      extendWebpack (cfg) {
+        // cfg.resolve.alias = {
+        //   ...cfg.resolve.alias, // This adds the existing alias
+
+        //   // Add your own alias like this
+        //   myalias: path.resolve(__dirname, './src/somefolder'),
+        // }
+      },
+      chainWebpack(config, { isServer, isClient }){
+                config.module .rule("xlsx")
+        .test(/\.xls.?$/)
+        .use("excel-loader")
+        // node_modules\excel-loader\index.js
+        .loader("./node_modules/excel-loader/index.js")
+        // config.module .rule("md")
+        // .test(/\.md$/)
+        // .use("vue-loader")
+        // .loader("vue-loader")
+        // .end()
+        // .use("vue-markdown-loader")
+        // .loader("vue-markdown-loader/lib/markdown-compiler")
+        // .options({
+        //   raw: true
+        // });
+     
+        config.module .rule("docx")
+        .test(/\.docx$/)
+        .use("docx-loader")
+        // node_modules\excel-loader\index.js
+        .loader("./node_modules/docx-loader/index.js")
+        .options({
+          removeLinks: true
+        })
+
+          config.resolve.alias
+            .set('public', path.resolve(__dirname, './public'))
+        
+      }
+    },
+
+    // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
+    devServer: {
+      https: false,
+      port: 18080,
+      open: true // opens browser window automatically
     },
 
     // animations: 'all', // --- includes all animations
-    // https://v1.quasar.dev/options/animations
+    // https://quasar.dev/options/animations
     animations: [],
 
-    // https://v1.quasar.dev/quasar-cli/developing-ssr/configuring-ssr
+    // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {
       pwa: false
     },
 
-    // https://v1.quasar.dev/quasar-cli/developing-pwa/configuring-pwa
+    // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
     pwa: {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: `Quasar App`,
-        short_name: `Quasar App`,
-        description: `A Quasar Framework app`,
+        name: 'Quasar App',
+        short_name: 'Quasar App',
+        description: 'A Quasar Framework app',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
         theme_color: '#027be3',
         icons: [
           {
-            src: 'icons/icon-128x128.png',
-            sizes: '128x128',
-            type: 'image/png'
+            'src': 'icons/icon-128x128.png',
+            'sizes': '128x128',
+            'type': 'image/png'
           },
           {
-            src: 'icons/icon-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
+            'src': 'icons/icon-192x192.png',
+            'sizes': '192x192',
+            'type': 'image/png'
           },
           {
-            src: 'icons/icon-256x256.png',
-            sizes: '256x256',
-            type: 'image/png'
+            'src': 'icons/icon-256x256.png',
+            'sizes': '256x256',
+            'type': 'image/png'
           },
           {
-            src: 'icons/icon-384x384.png',
-            sizes: '384x384',
-            type: 'image/png'
+            'src': 'icons/icon-384x384.png',
+            'sizes': '384x384',
+            'type': 'image/png'
           },
           {
-            src: 'icons/icon-512x512.png',
-            sizes: '512x512',
-            type: 'image/png'
+            'src': 'icons/icon-512x512.png',
+            'sizes': '512x512',
+            'type': 'image/png'
           }
         ]
       }
     },
 
-    // Full list of options: https://v1.quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
+    // Full list of options: https://quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
     cordova: {
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
+      // id: 'org.cordova.quasar.app'
     },
 
-    // Full list of options: https://v1.quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
+
+    // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
     capacitor: {
       hideSplashscreen: true
     },
 
-    // Full list of options: https://v1.quasar.dev/quasar-cli/developing-electron-apps/configuring-electron
+    // Full list of options: https://quasar.dev/quasar-cli/developing-electron-apps/configuring-electron
     electron: {
       bundler: 'packager', // 'packager' or 'builder'
 
@@ -189,13 +241,20 @@ module.exports = function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'quasar-v1-template------------'
+        appId: 'learning-space',
+        // output:'./dist-electron',
+        // distDir:"./dist-electron",
+        directories:{
+          // output:'./dist-electron'
+        }
       },
 
-      // More info: https://v1.quasar.dev/quasar-cli/developing-electron-apps/node-integration
+      // keep in sync with /src-electron/main-process/electron-main
+      // > BrowserWindow > webPreferences > nodeIntegration
+      // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
       nodeIntegration: true,
 
-      extendWebpack (/* cfg */) {
+      extendWebpack (cfg) {
         // do something with Electron main process Webpack cfg
         // chainWebpack also available besides this extendWebpack
       }

@@ -13,6 +13,13 @@ Vue.use(VueRouter)
  * async/await or return a Promise which resolves
  * with the Router instance.
  */
+let for_github =  process.env.for_github
+let  mode =  process.env.VUE_ROUTER_MODE
+let base = process.env.VUE_ROUTER_BASE 
+
+if(for_github && mode=='history'){
+  base='/jinnian-space/'
+}
 
 export default function (/* { store, ssrContext } */) {
   const Router = new VueRouter({
@@ -22,8 +29,10 @@ export default function (/* { store, ssrContext } */) {
     // Leave these as they are and change in quasar.conf.js instead!
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
-    mode: process.env.VUE_ROUTER_MODE,
-    base: process.env.VUE_ROUTER_BASE
+    // mode: process.env.VUE_ROUTER_MODE,
+    // base: process.env.VUE_ROUTER_BASE
+    mode,
+base
   })
 
   return Router
