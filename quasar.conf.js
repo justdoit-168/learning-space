@@ -85,7 +85,7 @@ module.exports = function (ctx) {
     htmlVariables: {
       title: '成长空间',
       description:'成长空间',
-      icon_path: ctx.dev?'img/logo/favicon.ico':  (for_github ?'/public/img/logo/favicon.ico':'img/logo/favicon.ico')
+      icon_path: ctx.dev?'img/logo/favicon.ico':  (for_github ?'/learning-space/public/img/logo/favicon.ico':'img/logo/favicon.ico')
   
     },
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
@@ -101,7 +101,7 @@ module.exports = function (ctx) {
       gzip: false,
       analyze: false,
       // publicPath:"https://github.com/jinnianwushuang/learning-space/blob/master/public/",  mode
-      publicPath: for_github?"/public/":"/",
+      publicPath: for_github?"/learning-space/public/":"/",
       env: {
         last_update_time:  new Date().getTime(),
         for_github
