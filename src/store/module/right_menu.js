@@ -1,6 +1,6 @@
 /*
  * @Date           : 2021-07-09 01:11:11
- * @FilePath       : /jinnian-space/src/store/module/right_menu.js
+ * @FilePath       : /learning-space/src/store/module/right_menu.js
  * @Description    : 
  */
 import leftmenu from "src/config/menu.js";

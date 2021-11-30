@@ -1,6 +1,6 @@
 <!--
  * @Date           : 2020-08-31 16:40:04
- * @FilePath       : /jinnian-space/src/pages/sql/module/mysql/index.vue
+ * @FilePath       : /learning-space/src/pages/sql/module/mysql/index.vue
  * @Description    : 
 -->
 <template>

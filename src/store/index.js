@@ -1,6 +1,6 @@
 /*
  * @Date           : 2021-07-09 01:11:11
- * @FilePath       : /jinnian-space/src/store/index.js
+ * @FilePath       : /learning-space/src/store/index.js
  * @Description    : 
  */
 import Vue from 'vue'

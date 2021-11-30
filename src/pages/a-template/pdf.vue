@@ -1,6 +1,6 @@
 <!--
  * @Date           : 2021-04-12 16:02:15
- * @FilePath       : /jinnian-space/src/pages/basics-template/module/m2.vue
+ * @FilePath       : /learning-space/src/pages/basics-template/module/m2.vue
  * @Description    : 
 -->
 <template>

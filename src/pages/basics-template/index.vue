@@ -1,11 +1,11 @@
 <!--
  * @Date           : 2021-04-12 16:09:51
- * @FilePath       : /jinnian-space/src/pages/basics-template/index.vue
+ * @FilePath       : /learning-space/src/pages/basics-template/index.vue
  * @Description    : 
 -->
 <!--
  * @Date           : 2020-08-31 16:40:04
- * @FilePath       : /jinnian-space/src/pages/java/index.vue
+ * @FilePath       : /learning-space/src/pages/java/index.vue
  * @Description    : 
 -->
 <template>

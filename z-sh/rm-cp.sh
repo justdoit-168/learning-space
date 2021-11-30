@@ -1,6 +1,6 @@
 ###
  # @Date           : 2021-07-04 19:04:38
- # @FilePath       : /jinnian-space/z-sh/rm-cp.sh
+ # @FilePath       : /learning-space/z-sh/rm-cp.sh
  # @Description    : 
 ### 
 

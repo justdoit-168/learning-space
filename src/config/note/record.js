@@ -1,6 +1,6 @@
 /*
  * @Date           : 2020-08-31 16:40:04
- * @FilePath       : /jinnian-space/src/config/note/record.js
+ * @FilePath       : /learning-space/src/config/note/record.js
  * @Description    :
  */
 export default [

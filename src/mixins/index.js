@@ -1,6 +1,6 @@
 /*
  * @Date           : 2021-07-05 00:12:35
- * @FilePath       : /jinnian-space/src/mixins/index.js
+ * @FilePath       : /learning-space/src/mixins/index.js
  * @Description    : 
  */
 

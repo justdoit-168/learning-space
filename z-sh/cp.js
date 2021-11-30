@@ -1,6 +1,6 @@
 /*
  * @Date           : 2021-07-04 19:33:41
- * @FilePath       : /jinnian-space/z-sh/cp.js
+ * @FilePath       : /learning-space/z-sh/cp.js
  * @Description    : 
  */
 const { setTimeout } = require('core-js');

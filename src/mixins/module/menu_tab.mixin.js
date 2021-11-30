@@ -1,6 +1,6 @@
 /*
  * @Date           : 2021-07-17 17:36:31
- * @FilePath       : /jinnian-space/src/mixins/module/menu_tab.mixin.js
+ * @FilePath       : /learning-space/src/mixins/module/menu_tab.mixin.js
  * @Description    : 右边  菜单  tab 的数据集成插件
  */
 // import {menu_tab_mixin} from "src/mixins/index.js"

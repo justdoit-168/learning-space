@@ -1,6 +1,6 @@
 <!--
  * @Date           : Mon Aug 31 2020 16:40:04
- * @FilePath       : /jinnian-space/src/layouts/MyLayout.vue
+ * @FilePath       : /learning-space/src/layouts/MainLayout.vue
  * @Description    : 
 -->
 <template>
@@ -202,9 +202,7 @@ export default {
     return {
       title: "我生待明日，万事成蹉跎。",
       title: "锦绣年华",
-      // title: "we are who we choose to be",
-      // title:"锦年成长空间",
-      // title:"I dreamed a dream",
+ 
       mid_text: "we are who we choose to be",
       mid_text: "Learn、analyze and follow the process",
       mid_text: "流程错了",

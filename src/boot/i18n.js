@@ -1,6 +1,6 @@
 /*
  * @Date           : 2020-08-31 16:40:04
- * @FilePath       : /jinnian-space/src/boot/i18n.js
+ * @FilePath       : /learning-space/src/boot/i18n.js
  * @Description    : 
  */
 import Vue from 'vue'

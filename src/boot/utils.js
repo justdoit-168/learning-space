@@ -1,6 +1,6 @@
 /*
  * @Date           : 2021-07-04 23:58:05
- * @FilePath       : /jinnian-space/src/boot/utils.js
+ * @FilePath       : /learning-space/src/boot/utils.js
  * @Description    : 
  */
 
@@ -16,7 +16,7 @@ var base_url = process.cwd();
 // util.compute_book_src()
 const compute_book_src = str => {
   console.log("isdev", isdev);
-  // let prefix='https://github.com/jinnianwushuang/jinnian-space/blob/master/public/'
+  // let prefix='https://github.com/jinnianwushuang/learning-space/blob/master/public/'
   if (isdev) {
     // return     str.trim()
     // console.log( base_url+  str.trim());

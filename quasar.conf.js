@@ -83,7 +83,7 @@ module.exports = function (ctx) {
     supportIE: true,
     //https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-htmlVariables
     htmlVariables: {
-      title: '成长空间',
+      title: 'nati',
       description:'成长空间',
       icon_path: ctx.dev?'img/logo/favicon.ico':  (for_github ?'/learning-space/public/img/logo/favicon.ico':'img/logo/favicon.ico')
   
@@ -92,7 +92,7 @@ module.exports = function (ctx) {
 
 
     build: {
-      distDir: (for_github?"./docs-2":'./dist/dist-spa-server') ,
+      distDir: process.argv[3]=='electron'? "./dist/dist-electron":(for_github?"./docs-2":'./dist/dist-spa-server') ,
       scopeHoisting: true,
       vueRouterMode: 'hash', // available values: 'hash', 'history'
       // vueRouterMode: 'history', // available values: 'hash', 'history'
@@ -148,13 +148,17 @@ module.exports = function (ctx) {
           config.resolve.alias
             .set('public', path.resolve(__dirname, './public'))
         
+      },
+      //https://github.com/webpack-contrib/terser-webpack-plugin/#minify
+      uglifyOptions:{
+
       }
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
       https: false,
-      port: 18080,
+      port: 48080,
       open: true // opens browser window automatically
     },
 

@@ -1,6 +1,6 @@
 /*
  * @Date           : 2021-07-05 00:13:12
- * @FilePath       : /jinnian-space/src/mixins/module/select_pdf.mixin.js
+ * @FilePath       : /learning-space/src/mixins/module/select_pdf.mixin.js
  * @Description    : 
  */
 

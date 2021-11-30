@@ -1,3 +1,8 @@
+/*
+ * @Date           : 2021-11-24 23:47:50
+ * @FilePath       : /learning-space/src/router/index.js
+ * @Description    : 
+ */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -18,7 +23,7 @@ let  mode =  process.env.VUE_ROUTER_MODE
 let base = process.env.VUE_ROUTER_BASE 
 
 if(for_github && mode=='history'){
-  base='/jinnian-space/'
+  base='/learning-space/'
 }
 
 export default function (/* { store, ssrContext } */) {
