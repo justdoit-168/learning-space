@@ -83,7 +83,7 @@ module.exports = function (ctx) {
     supportIE: true,
     //https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-htmlVariables
     htmlVariables: {
-      title: 'nati',
+      title: 'NATI',
       description:'成长空间',
       icon_path: ctx.dev?'img/logo/favicon.ico':  (for_github ?'/learning-space/public/img/logo/favicon.ico':'img/logo/favicon.ico')
   

@@ -7,24 +7,24 @@
   <!-- <q-layout     :view="$q.platform.is.mobile?'lHh Lpr lFf':'hHh Lpr lFf' ">  bg-white text-black -->
   <q-layout view="hHh LpR lFf">
     <q-header
-      style="border-bottom:1px solid #ccc"
+      style="border-bottom: 1px solid #ccc"
       class="bg-primary text-white"
     >
       <q-bar
         v-if="current_mode === 'electron'"
-        style="height:36px; line-height:36px;"
-        class="q-electron-drag "
+        style="height: 36px; line-height: 36px"
+        class="q-electron-drag"
       >
         <!-- reference from /public: -->
         <q-icon name="img:logo.png" size="30px" />
         <q-btn
           flat
           @click="drawer = !drawer"
-          style="font-size: 14px;"
+          style="font-size: 14px"
           label="菜单"
         />
-        <div class="fsz12 " style="font-size: 14px;">
-          --------- {{ title }} ---------{{ last_update_time }}
+        <div class="fsz12" style="font-size: 14px">
+          --------- {{ title }}---------{{ last_update_time }}
         </div>
         <q-space />
         <q-btn dense flat icon="minimize" @click="minimize" />
@@ -59,7 +59,7 @@
       class="hide-scrollbar"
       v-model="drawerLeft"
       show-if-above
-      :width="160"
+      :width="100"
       :breakpoint="500"
       bordered
       content-class="bg-grey-3 hide-scrollbar "
@@ -89,9 +89,7 @@
           </q-item>
         </q-list>
         <!--左侧收展按钮-->
-      
       </q-scroll-area>
-      
     </q-drawer>
     <!-- 右侧菜单组件 -->
     <q-drawer
@@ -132,21 +130,33 @@
     <q-page-container :style="q_page_container_style" class="q-pb-sm">
       <router-view :class="$q.platform.is.desktop ? 'q-pa-md' : 'q-pa-sm'" />
 
-   <!-- 右侧菜单 -->
-                  <q-page-sticky
+      <!-- 右侧菜单 -->
+      <q-page-sticky
         position="bottom-right"
         :offset="[5, 70]"
-        @click="drawerRight=!drawerRight"
+        @click="drawerRight = !drawerRight"
       >
-        <q-btn dense color="primary"  size="sm" icon="expand_more"  class="rotate-270" />
+        <q-btn
+          dense
+          color="primary"
+          size="sm"
+          icon="expand_more"
+          class="rotate-270"
+        />
       </q-page-sticky>
       <!-- 左侧菜单 -->
-            <q-page-sticky
+      <q-page-sticky
         position="bottom-right"
         :offset="[35, 70]"
-        @click="drawerLeft=!drawerLeft"
+        @click="drawerLeft = !drawerLeft"
       >
-        <q-btn dense color="primary"  size="sm" icon="expand_more"  class="rotate-90"/>
+        <q-btn
+          dense
+          color="primary"
+          size="sm"
+          icon="expand_more"
+          class="rotate-90"
+        />
       </q-page-sticky>
 
       <!-- 向上位移 -->
@@ -157,7 +167,7 @@
         @mousedown="handle_scroll_towards('up', 2)"
         @mouseup="handle_scroll_towards('up', 3)"
       >
-        <q-btn dense color="primary"  size="sm" icon="arrow_upward" />
+        <q-btn dense color="primary" size="sm" icon="arrow_upward" />
       </q-page-sticky>
       <!-- 向下位移 -->
       <q-page-sticky
@@ -166,16 +176,16 @@
         @click="handle_scroll_towards('down', 1)"
         @mousedown="handle_scroll_towards('down', 2)"
         @mouseup="handle_scroll_towards('down', 3)"
-        >
-        <q-btn dense color="primary"  size="sm" icon="arrow_downward" />
+      >
+        <q-btn dense color="primary" size="sm" icon="arrow_downward" />
       </q-page-sticky>
- <!-- 直达底部 -->
+      <!-- 直达底部 -->
       <q-page-sticky
         position="bottom-right"
         :offset="[35, 10]"
         @click="handle_scroll_towards('down', 100)"
       >
-        <q-btn dense color="primary"  size="sm" icon="expand_more" />
+        <q-btn dense color="primary" size="sm" icon="expand_more" />
       </q-page-sticky>
       <!-- 直达顶部 -->
       <q-page-sticky
@@ -183,7 +193,7 @@
         :offset="[5, 10]"
         @click="handle_scroll_towards('down', 1000)"
       >
-        <q-btn dense color="primary"  size="sm" icon="expand_less" />
+        <q-btn dense color="primary" size="sm" icon="expand_less" />
       </q-page-sticky>
     </q-page-container>
   </q-layout>
@@ -192,7 +202,7 @@
 import menu from "src/config/menu.js";
 import { date } from "quasar";
 import { mapGetters, mapActions } from "vuex";
- 
+
 let timeStamp = process.env.last_update_time;
 let last_update_time = date.formatDate(timeStamp, "YYYY-MM-DD     HH:mm:ss");
 // YYYY-MM-DD  HH:mm:ss.SSSZ
@@ -201,11 +211,11 @@ export default {
   data() {
     return {
       title: "我生待明日，万事成蹉跎。",
-      title: "锦绣年华",
- 
+      title: "今天的计划完成了吗？",
+
       mid_text: "we are who we choose to be",
       mid_text: "Learn、analyze and follow the process",
-      mid_text: "流程错了",
+      mid_text: "今日事今日毕(眼到-心到-收到)",
       last_update_time,
       drawerLeft: false,
       menu,
@@ -215,13 +225,13 @@ export default {
       drawerRight: true,
       current_mode: process.env.MODE,
       flat_right_menu: [],
-      timer_move_step: null // 屏幕按钮触发的滚动事件的 计时器
+      timer_move_step: null, // 屏幕按钮触发的滚动事件的 计时器
     };
   },
   computed: {
     ...mapGetters({
       right_menu: "get_right_menu",
-      current_selected_right_menu: "get_current_selected_right_menu"
+      current_selected_right_menu: "get_current_selected_right_menu",
     }),
     q_page_container_style() {
       let width = "";
@@ -231,10 +241,10 @@ export default {
         width = " 100vw ";
       }
       let obj = {
-        width
+        width,
       };
       return obj;
-    }
+    },
   },
   created() {
     // console.log('this.$route',this.$route);
@@ -249,31 +259,31 @@ export default {
       this.current_menu = this.$route.name;
     },
     right_menu: {
-      handler: function() {
+      handler: function () {
         console.log("right_menu---------------right_menu", this.right_menu);
         this.compute_flat_right_menu();
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   methods: {
     ...mapActions(["set_current_selected_right_menu"]),
     compute_flat_right_menu() {
       let arr = [];
-      this.right_menu.map(x => {
+      this.right_menu.map((x) => {
         let obj = {
           ...x,
-          tl: 1
+          tl: 1,
         };
         arr.push(obj);
         if (Array.isArray(x.children)) {
-          x.children.map(y => {
+          x.children.map((y) => {
             let obj2 = {
               ...y,
               tl: 2,
               parent: {
-                ...x
-              }
+                ...x,
+              },
             };
             arr.push(obj2);
           });
@@ -287,7 +297,7 @@ export default {
       this.current_menu = item.name;
       if (this.$route.name != item.name) {
         this.$router.push({
-          name: item.name
+          name: item.name,
         });
       }
     },
@@ -329,7 +339,7 @@ export default {
       this.set_current_selected_right_menu(item);
       this.$q.cookies.get("last_nemu", {
         right_menu: item,
-        current_menu: this.current_menu
+        current_menu: this.current_menu,
       });
       window.scrollTo(0, 0);
       this.$nextTick(this.compute_flat_right_menu());
@@ -371,7 +381,7 @@ export default {
       if (process.env.MODE === "electron") {
         this.$q.electron.remote.BrowserWindow.getFocusedWindow().close();
       }
-    }
-  }
+    },
+  },
 };
 </script>
