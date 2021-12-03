@@ -28,8 +28,8 @@ const routes = [
       //   component: () => import( "src/pages/demo/index.vue")
       // },
       {
-        path: "01html",
-        name: "01html",
+        path: "html",
+        name: "阶段一",
         meta:{
           show:true,
           order: 17
@@ -37,6 +37,15 @@ const routes = [
         component: () => import( "src/pages/html/index.vue")
       },
       
+      {
+        path: "web",
+        name: "阶段二",
+        meta:{
+          show:true,
+          order: 17
+        },
+        component: () => import( "src/pages/web/index.vue")
+      },
     ]
   },
 
